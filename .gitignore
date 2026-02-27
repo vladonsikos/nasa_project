@@ -1,0 +1,23 @@
+# Виртуальное окружение
+venv/
+.env
+
+# База данных
+*.sqlite3
+*.db
+
+# Папки с медиа и статикой (обычно их не хранят в репозитории)
+/media/
+/staticfiles/
+
+# Кеш Python
+__pycache__/
+*.pyc
+
+# Файлы IDE
+.vscode/
+.idea/
+
+# Django
+*.log
+local_settings.py

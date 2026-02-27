@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NASA — Космическое агентство</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'landing/css/style.css' %}"/>
+</head>
+<body>
+
+<nav class="navbar-custom" id="main-navbar">
+  <div class="navbar-inner">
+    <button class="hamburger d-lg-none" id="hamburger-btn" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#" class="navbar-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 304 304" width="56" height="56" aria-label="NASA">
+        <circle cx="152" cy="152" r="150" fill="#0b3d91"/>
+        <circle cx="58" cy="78" r="4" fill="#fff"/><circle cx="88" cy="52" r="3" fill="#fff"/>
+        <circle cx="118" cy="66" r="3.5" fill="#fff"/><circle cx="73" cy="103" r="2.5" fill="#fff"/>
+        <circle cx="48" cy="128" r="3" fill="#fff"/><circle cx="98" cy="38" r="2" fill="#fff"/>
+        <circle cx="43" cy="155" r="2.5" fill="#fff"/><circle cx="218" cy="63" r="3" fill="#fff"/>
+        <circle cx="244" cy="88" r="4" fill="#fff"/><circle cx="263" cy="113" r="2.5" fill="#fff"/>
+        <circle cx="253" cy="143" r="3" fill="#fff"/><circle cx="233" cy="48" r="2" fill="#fff"/>
+        <circle cx="183" cy="40" r="3" fill="#fff"/>
+        <path d="M28 178 Q75 118 138 175 Q152 190 152 190 Q152 190 166 175 Q229 118 276 178 Q258 215 228 232 Q200 248 152 252 Q104 248 76 232 Q46 215 28 178Z" fill="#fc3d21"/>
+        <text x="152" y="168" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="70" fill="#fff" letter-spacing="3">NASA</text>
+        <ellipse cx="152" cy="152" rx="150" ry="52" fill="none" stroke="#028fde" stroke-width="11"/>
+        <circle cx="287" cy="140" r="15" fill="#028fde"/>
+      </svg>
+    </a>
+    <ul class="navbar-links d-none d-lg-flex">
+      <li><a href="#features">ПРЕИМУЩЕСТВА</a></li>
+      <li><a href="#photos">ФОТОГРАФИИ</a></li>
+    </ul>
+    <a href="#" class="btn-login">ВХОД</a>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#features" class="mobile-menu-link">ПРЕИМУЩЕСТВА</a>
+    <a href="#photos" class="mobile-menu-link">ФОТОГРАФИИ</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">Космическое агентство</h1>
+    <p class="hero-subtitle">Национальное управление по аэронавтике и исследованию космического пространства — ведомство, относящееся к федеральному правительству США и подчиняющееся непосредственно президенту США.</p>
+  </div>
+</section>
+
+<section id="features">
+  <div class="features-inner">
+    <div class="features-image-wrap">
+      {% load static %}
+      <img src="{% static 'landing/img/earth.png' %}" alt="Земля" class="features-earth-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/600px-The_Earth_seen_from_Apollo_17.jpg'"/>
+    </div>
+    <div class="features-cards-grid">
+      <div class="feature-card">
+        <div class="feature-icon icon-blue">
+          <img src="https://api.iconify.design/fa6-solid/shuttle-space.svg?color=%230b3d91&width=44&height=44" alt="shuttle" width="44" height="44"/>
+        </div>
+        <div class="feature-text">Спейс шаттлы — пилотируемые корабли</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-blue">
+          <img src="https://api.iconify.design/ion/telescope.svg?color=%230b3d91&width=44&height=44" alt="telescope" width="44" height="44"/>
+        </div>
+        <div class="feature-text">Лучшее телескопическое оборудование</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-yellow">
+          <img src="https://api.iconify.design/bi/moon-stars-fill.svg?color=%23c3cddd&width=44&height=44" alt="moon" width="44" height="44"/>
+        </div>
+        <div class="feature-text">Исследовательские станции на Луне — шаг к новым открытиям!</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-yellow">
+          <img src="https://api.iconify.design/bxs/medal.svg?color=%23ff342b&width=44&height=44" alt="medal" width="44" height="44"/>
+        </div>
+        <div class="feature-text">Золотая медаль по научным исследованиям</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="photos">
+  <div class="photos-inner">
+    <h2 class="photos-title">Фотографии</h2>
+    <div id="main-slider">
+      {% for slide in slides %}
+      <div class="main-slide">
+        {% if slide.image %}
+          <img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="main-slide-img" data-index="{{ forloop.counter0 }}"/>
+        {% else %}
+          <img src="https://picsum.photos/seed/slide{{ slide.order }}/900/500" alt="{{ slide.title }}" class="main-slide-img" data-index="{{ forloop.counter0 }}"/>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="nav-slider-wrap">
+      <button class="nav-arrow nav-arrow--prev" id="nav-prev">&#8592;</button>
+      <div id="nav-slider">
+        {% for slide in slides %}
+        <div class="nav-slide">
+          {% if slide.image %}
+            <img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="nav-slide-img"/>
+          {% else %}
+            <img src="https://picsum.photos/seed/slide{{ slide.order }}/200/150" alt="{{ slide.title }}" class="nav-slide-img"/>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      <button class="nav-arrow nav-arrow--next" id="nav-next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+    <div class="modal-content modal-gallery-content">
+      <button type="button" class="modal-close-btn" data-bs-dismiss="modal">&times;</button>
+      <div class="modal-body p-0">
+        <div id="modal-slider">
+          {% for slide in slides %}
+          <div class="modal-slide">
+            {% if slide.image %}
+              <img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="modal-slide-img"/>
+            {% else %}
+              <img src="https://picsum.photos/seed/slide{{ slide.order }}/1200/700" alt="{{ slide.title }}" class="modal-slide-img"/>
+            {% endif %}
+            <div class="modal-caption">{{ slide.title }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+{% load static %}
+<script src="{% static 'landing/js/main.js' %}"></script>
+</body>
+</html>
