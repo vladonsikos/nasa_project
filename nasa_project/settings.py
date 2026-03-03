@@ -10,6 +10,34 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-me-in-producti
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = ['*']
 
+# ============================================================================
+# БЕЗОПАСНОСТЬ И ОГРАНИЧЕНИЯ
+# ============================================================================
+
+# Максимальный размер загружаемого файла (50 MB)
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800
+FILE_UPLOAD_MAX_MEMORY_SIZE = 52428800
+
+# Максимальное количество полей в форме
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 1000
+
+# CSRF и Security настройки
+CSRF_COOKIE_SECURE = False  # Установить True в продакшене с HTTPS
+CSRF_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = False  # Установить True в продакшене с HTTPS
+SESSION_COOKIE_HTTPONLY = True
+
+# X-Frame-Options для защиты от clickjacking
+X_FRAME_OPTIONS = 'DENY'
+
+# Content Security Policy (базовая)
+SECURE_CONTENT_SECURITY_POLICY = {
+    "default-src": ("'self'",),
+    "script-src": ("'self'", "cdn.jsdelivr.net", "code.jquery.com"),
+    "style-src": ("'self'", "cdn.jsdelivr.net", "'unsafe-inline'"),
+    "img-src": ("'self'", "data:", "https:", "http:"),
+}
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
