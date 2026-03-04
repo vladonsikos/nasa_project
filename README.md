@@ -5,7 +5,6 @@ Django проект с полной вёрсткой по макету Figma, а
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Django](https://img.shields.io/badge/Django-5.2-green)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.3-purple)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 ![Tests](https://img.shields.io/badge/Tests-24-brightgreen)
 
 ## 📋 Содержание
